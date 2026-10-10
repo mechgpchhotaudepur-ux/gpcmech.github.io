@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NPTEL achievements - Mechanical Engineering, Government Polytechnic Chhotaudepur</title>
+<link rel="stylesheet" href="assets/dept-data.css"></head>
+<body><div class="dd-wrap">
+<nav class="dd-nav"><a href="index.html">Home</a><a href="staff.html">Staff</a><a href="student-performance.html">Student performance</a><a href="faculty-training.html">Faculty training</a><a href="projects.html">Student projects</a><a href="labs.html">Laboratories</a><a href="vision-mission.html">Vision and PEOs</a><a href="nptel.html">NPTEL</a><a href="student-achievements.html">Achievements</a></nav>
+<h1>NPTEL achievements</h1><p class="dd-sub">NPTEL courses completed by the faculty of the department and the NPTEL Discipline Star recognition.</p>
+<div class="dd-cards" id="cards"></div><div class="dd-grid"><div class="dd-box" id="star"></div><div class="dd-box"><h3>Courses per faculty member</h3><canvas id="c1"></canvas></div><div class="dd-box"><h3>Final scores (per cent)</h3><canvas id="c2"></canvas></div></div>
+<input class="dd-search" id="q" placeholder="Search faculty or course"><div class="dd-scroll" id="t"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</div>
+<script src="assets/dept-data.js"></script>
+<script>
+ddLoad("data/nptel.json").then(function (d) {
+  var rows = d.courses, by = ddCount(rows, "faculty"), sc = rows.map(function (r) { return r.score_percent; });
+  ddCards(document.getElementById("cards"), [[rows.length, "Courses completed"], [Object.keys(by).length, "Faculty members"], [Math.max.apply(null, sc) + "%", "Highest score"], [Math.round(sc.reduce(function (a, b) { return a + b; }, 0) / sc.length) + "%", "Average score"]]);
+  document.getElementById("star").innerHTML = "<h3>" + ddEsc(d.star.title) + "</h3><img src='" + d.star.image + "' alt='NPTEL Discipline Star certificate' style='width:100%;max-width:340px;border-radius:8px'><p><b>" + ddEsc(d.star.name) + "</b>, " + ddEsc(d.star.discipline) + ", " + ddEsc(d.star.session) + "</p><p class='dd-note'>" + ddEsc(d.star.rule) + "</p>";
+  var t = document.getElementById("t");
+  ddTable(t, [["Faculty", "faculty"], ["Course", "course"], ["Session", "session"], ["Weeks", "weeks"], ["Final score %", "score_percent"]], rows);
+  ddSearch(document.getElementById("q"), t);
+  if (typeof Chart === "undefined") return;
+  var names = Object.keys(by);
+  new Chart(document.getElementById("c1"), { type: "bar", data: { labels: names, datasets: [{ label: "Courses", data: names.map(function (n) { return by[n]; }), backgroundColor: "#219ebc" }] }, options: { scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } } });
+  var bins = [0, 0, 0, 0]; sc.forEach(function (s) { bins[s >= 90 ? 3 : s >= 75 ? 2 : s >= 60 ? 1 : 0]++; });
+  new Chart(document.getElementById("c2"), { type: "pie", data: { labels: ["Below 60", "60 to 74", "75 to 89", "90 and above"], datasets: [{ data: bins, backgroundColor: ["#c9ced6", "#8ecae6", "#219ebc", "#023047"] }] } });
+}).catch(function (e) { document.getElementById("t").textContent = e.message; });
+</script></body></html>

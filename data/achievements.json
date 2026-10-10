@@ -1,0 +1,25 @@
+{
+ "student": [
+  {
+   "title": "Pride of Government Polytechnic Chhotaudepur",
+   "name": "Omkar Sunil Bhaleghare",
+   "line": "National and International Kickboxing Medallist",
+   "poster": "assets/img/student-achievement-poster.jpg",
+   "medals": {
+    "gold": 11,
+    "silver": 1,
+    "bronze": 4,
+    "total": 16,
+    "tournaments": 20,
+    "years": "2021 to 2026"
+   },
+   "highlights": [
+    "Gold: WAKO India National 2022, Chennai",
+    "Silver: WAKO India Open International 2024, Delhi",
+    "Bronze: Asian Championship 2024, Phnom Penh",
+    "Grand Champion: President Cup 2024, 2025",
+    "Gold: Gujarat State Championship 2026"
+   ]
+  }
+ ]
+}

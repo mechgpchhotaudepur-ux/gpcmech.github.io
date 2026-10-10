@@ -1,0 +1,110 @@
+{
+ "star": {
+  "name": "V P Sarvaiya",
+  "title": "NPTEL Discipline Star",
+  "discipline": "Mechanical Engineering",
+  "session": "Jul-Dec 2025",
+  "rule": "Certified in courses of the same discipline, more than 50 weeks of learning, final score of at least 55 in each course",
+  "image": "assets/img/nptel-discipline-star-2025.jpg"
+ },
+ "courses": [
+  {
+   "faculty": "V C Chaudhari",
+   "course": "Thermal Engineering: Basic and Applied",
+   "session": "Jan-Apr 2025",
+   "weeks": 12,
+   "score_percent": 73
+  },
+  {
+   "faculty": "V C Chaudhari",
+   "course": "Stress Management",
+   "session": "Aug-Sep 2023",
+   "weeks": 4,
+   "score_percent": 70
+  },
+  {
+   "faculty": "V C Chaudhari",
+   "course": "Foundation of Computational Fluid Dynamics",
+   "session": "Jul-Sep 2026",
+   "weeks": 8,
+   "score_percent": 61
+  },
+  {
+   "faculty": "K N Patel",
+   "course": "Product Design and Development",
+   "session": "Jul-Aug 2025",
+   "weeks": 4,
+   "score_percent": 78
+  },
+  {
+   "faculty": "K N Patel",
+   "course": "Advanced Machining Processes",
+   "session": "Aug-Oct 2025",
+   "weeks": 8,
+   "score_percent": 60
+  },
+  {
+   "faculty": "K N Patel",
+   "course": "Materials Science and Engineering",
+   "session": "Jan-Mar 2026",
+   "weeks": 8,
+   "score_percent": 60
+  },
+  {
+   "faculty": "K N Patel",
+   "course": "Mechanical Behavior of Materials (Hindi)",
+   "session": "Jan-Apr 2026",
+   "weeks": 12,
+   "score_percent": 64
+  },
+  {
+   "faculty": "H S Chaudhari",
+   "course": "Educational Technology and ICT",
+   "session": "Jan-Apr 2025",
+   "weeks": 12,
+   "score_percent": 93
+  },
+  {
+   "faculty": "V P Sarvaiya",
+   "course": "Educational Technology and ICT",
+   "session": "Jan-Apr 2025",
+   "weeks": 12,
+   "score_percent": 95
+  },
+  {
+   "faculty": "V P Sarvaiya",
+   "course": "Experimental Methods in Fluid Mechanics",
+   "session": "Jul-Oct 2025",
+   "weeks": 12,
+   "score_percent": 88
+  },
+  {
+   "faculty": "D V Chaudhari",
+   "course": "Educational Technology and ICT",
+   "session": "Jan-Apr 2025",
+   "weeks": 12,
+   "score_percent": 91
+  },
+  {
+   "faculty": "D V Chaudhari",
+   "course": "Stress Management",
+   "session": "Aug-Sep 2023",
+   "weeks": 4,
+   "score_percent": 75
+  },
+  {
+   "faculty": "A A Prajapati",
+   "course": "Machine Learning for Core Engineering Disciplines",
+   "session": "Jul-Oct 2025",
+   "weeks": 12,
+   "score_percent": 53
+  },
+  {
+   "faculty": "M N Madia",
+   "course": "Laser Based Manufacturing",
+   "session": "Aug-Oct 2025",
+   "weeks": 8,
+   "score_percent": 80
+  }
+ ]
+}

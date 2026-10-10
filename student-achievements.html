@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student achievements - Mechanical Engineering, Government Polytechnic Chhotaudepur</title>
+<link rel="stylesheet" href="assets/dept-data.css"></head>
+<body><div class="dd-wrap">
+<nav class="dd-nav"><a href="index.html">Home</a><a href="staff.html">Staff</a><a href="student-performance.html">Student performance</a><a href="faculty-training.html">Faculty training</a><a href="projects.html">Student projects</a><a href="labs.html">Laboratories</a><a href="vision-mission.html">Vision and PEOs</a><a href="nptel.html">NPTEL</a><a href="student-achievements.html">Achievements</a></nav>
+<h1>Student achievements</h1><p class="dd-sub">Students of the department who have brought recognition to the institute.</p>
+<div id="s"></div>
+</div>
+<script src="assets/dept-data.js"></script>
+<script>
+ddLoad("data/achievements.json").then(function (d) {
+  document.getElementById("s").innerHTML = d.student.map(function (a) {
+    var m = a.medals;
+    return "<div class='dd-box'><h3>" + ddEsc(a.title) + "</h3><img src='" + a.poster + "' alt='Achievement poster of " + ddEsc(a.name) + "' style='width:100%;border-radius:8px'>"
+      + "<h3 style='margin-top:14px'>" + ddEsc(a.name) + "</h3><p>" + ddEsc(a.line) + "</p><div class='dd-cards'><div class='dd-card'><b>" + m.gold + "</b>Gold</div><div class='dd-card'><b>" + m.silver + "</b>Silver</div><div class='dd-card'><b>" + m.bronze + "</b>Bronze</div><div class='dd-card'><b>" + m.total + "</b>Medals in " + m.tournaments + " tournaments, " + ddEsc(m.years) + "</div></div>"
+      + "<ul>" + a.highlights.map(function (h) { return "<li>" + ddEsc(h) + "</li>"; }).join("") + "</ul></div>";
+  }).join("");
+}).catch(function (e) { document.getElementById("s").textContent = e.message; });
+</script></body></html>

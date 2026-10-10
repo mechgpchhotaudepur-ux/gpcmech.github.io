@@ -1,0 +1,21 @@
+/* Department data pages. Change the variables to match the site. */
+:root { --primary: #023047; --accent: #219ebc; --soft: #e8f1f6; --text: #1b2733; --border: #d5dde4; --radius: 10px; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif; color: var(--text); background: #fff; line-height: 1.5; }
+.dd-wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 56px; }
+.dd-wrap h1 { color: var(--primary); margin: 0 0 4px; font-size: 1.7rem; }
+.dd-sub { color: #52606d; margin: 0 0 20px; }
+.dd-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 24px; }
+.dd-card { background: var(--soft); border-radius: var(--radius); padding: 14px 16px; }
+.dd-card b { display: block; font-size: 1.7rem; color: var(--primary); }
+.dd-search { width: 100%; max-width: 360px; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius); margin: 4px 0 12px; font-size: 1rem; }
+.dd-scroll { overflow-x: auto; }
+table.dd { border-collapse: collapse; width: 100%; font-size: .95rem; }
+table.dd th { background: var(--primary); color: #fff; text-align: left; padding: 9px 10px; position: sticky; top: 0; }
+table.dd td { border-bottom: 1px solid var(--border); padding: 8px 10px; vertical-align: top; }
+table.dd tr:nth-child(even) td { background: #f7fafc; }
+.dd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin: 20px 0; }
+.dd-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+.dd-box h3 { margin: 0 0 8px; color: var(--primary); font-size: 1.05rem; }
+.dd-note { font-size: .85rem; color: #52606d; margin-top: 18px; }
+nav.dd-nav a { margin-right: 14px; color: var(--accent); text-decoration: none; font-weight: 600; }

@@ -1,0 +1,9 @@
+Paste this into the Claude session that built the department website, with the files of this folder attached or placed in the repository.
+
+I have added data pages to my departmental website (GitHub Pages, static). Files: staff.html, student-performance.html, faculty-training.html, projects.html, labs.html, vision-mission.html, nptel.html, student-achievements.html, assets/dept-data.css, assets/img/, assets/dept-data.js and data/*.json.
+Please:
+1. Restyle these pages to match my existing site (same header, footer, fonts, colours, menu), keeping the data loading from data/*.json.
+2. Add links to the eight pages in my main menu and on the home page.
+3. Keep it static: no build step, no backend. Keep the search box and the charts (Chart.js from cdnjs).
+4. Do not add any student names (other than the achievement poster already included), enrolment numbers or phone numbers.
+5. Tell me exactly which files you changed so I can commit them.

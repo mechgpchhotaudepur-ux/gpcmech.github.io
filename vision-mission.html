@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision, Mission and PEOs - Mechanical Engineering, Government Polytechnic Chhotaudepur</title>
+<link rel="stylesheet" href="assets/dept-data.css"></head>
+<body><div class="dd-wrap">
+<nav class="dd-nav"><a href="index.html">Home</a><a href="staff.html">Staff</a><a href="student-performance.html">Student performance</a><a href="faculty-training.html">Faculty training</a><a href="projects.html">Student projects</a><a href="labs.html">Laboratories</a><a href="vision-mission.html">Vision and PEOs</a><a href="nptel.html">NPTEL</a><a href="student-achievements.html">Achievements</a></nav>
+<h1>Vision, Mission and PEOs</h1><p class="dd-sub">Vision and mission of the institute and of the Mechanical Engineering department, and the Programme Educational Objectives.</p>
+<div class="dd-grid"><div class="dd-box"><h3>Institute vision</h3><p id="iv"></p><h3>Institute mission</h3><ul id="im"></ul></div><div class="dd-box"><h3>Department vision</h3><p id="dv"></p><h3>Department mission</h3><ul id="dm"></ul></div></div><div class="dd-box"><h3>Programme Educational Objectives (PEOs)</h3><ul id="peo"></ul></div>
+</div>
+<script src="assets/dept-data.js"></script>
+<script>
+ddLoad("data/vision_mission.json").then(function (d) {
+  function list(id, arr) { document.getElementById(id).innerHTML = arr.map(function (x) { return "<li>" + ddEsc(x) + "</li>"; }).join(""); }
+  document.getElementById("iv").textContent = d.institute.vision; list("im", d.institute.mission);
+  document.getElementById("dv").textContent = d.department.vision; list("dm", d.department.mission); list("peo", d.peos);
+}).catch(function (e) { document.getElementById("iv").textContent = e.message; });
+</script></body></html>
