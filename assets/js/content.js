@@ -74,6 +74,8 @@ window.ACTIVITIES = [
 
 /* Download fields: title, text, icon (Material Symbols name), link */
 window.DOWNLOADS = [
+  { title: "Student Fees Payment", text: "Pay fees online through the e-Shiksha ERP portal", icon: "payments",
+    link: "https://erp.eshiksa.net/esh/index.php?plugin=Login&action=index" },
   { title: "Syllabus (New)", text: "Current GTU curriculum for all semesters", icon: "menu_book",
     link: "https://drive.google.com/drive/folders/1Ab-tlDQsAo4xB5qgpbzMoIwun-G7IsNj?usp=share_link" },
   { title: "Lab Manuals (New Syllabus)", text: "Practical manuals as per the new syllabus", icon: "science",
