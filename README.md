@@ -1,12 +1,12 @@
 # Mechanical Engineering Department website, GP Chhotaudepur
 
-A six-page website built from the Google Stitch design, using the content from
+The department website, built from the Google Stitch design, using the content from
 https://sites.google.com/view/gpchhotaudepurmech/
 
 | Page | File |
 |---|---|
 | Home | `index.html` |
-| Vision, Mission & PEOs | `vision-mission.html` |
+| Vision, Mission, PEOs & PSOs | `vision-mission.html` |
 | Download | `download.html` |
 | Notice Board | `notice-board.html` |
 | Activity | `activity.html` |
@@ -18,12 +18,43 @@ https://sites.google.com/view/gpchhotaudepurmech/
 | Student Performance | `student-performance.html` |
 | NPTEL | `nptel.html` |
 | Student Achievements | `student-achievements.html` |
+| Virtual Labs | `virtual-lab.html` |
 
 **Previewing on your computer:** most pages open with a double-click. The data pages
 (Vision & PEOs, Staff, Training, Laboratories, Projects, Performance, NPTEL, Achievements) load their numbers from the `data`
 folder, which browsers block on double-click. They work once the site is online. To preview
 them locally, open a terminal in this folder, run `python3 -m http.server 8000`, then go to
 http://localhost:8000.
+
+## Virtual Labs page (Virtual Lab Console)
+
+`virtual-lab.html` is the full Virtual Lab Console inside the department website. Students sign in with their
+GTU enrolment number, see the labs for their semester, open experiments on vlabs.ac.in, and fill a record sheet
+they can save, print or copy. Faculty use the **Faculty** tab for the session log (SAR 2.2.3 B).
+
+| File | What it is | Edit it when |
+|---|---|---|
+| `data/virtual-labs.js` | 16 labs (156 experiments) plus the 3 SAR experiments, course-to-lab mapping, notes, free tools | A lab, experiment or course mapping changes |
+| `assets/js/vlab-config.js` | Contact email, Google Sheet link (`sheetEndpoint`), enrolment-number rule | Once, at setup |
+| `assets/js/vlab-console.js`, `assets/css/vlab.css` | The console itself | Never |
+| `apps-script/Code.gs` | Google Apps Script that writes records into a Google Sheet | Only for setup |
+| `scripts/check-links.mjs`, `.github/workflows/link-check.yml` | Checks every lab link each Monday and writes `LINK-REPORT.md` | Never |
+
+**Editing labs:** open `data/virtual-labs.js` on GitHub, click the pencil, edit, commit. To add an experiment,
+add `["Title", "exp/slug/"],` at the **end** of that lab's `exps` list (codes such as `L9·E04` follow the order).
+
+**Virtual lab records in a Google Sheet (optional, recommended).** Without this, records stay in each student's
+browser and students print or copy them for you.
+1. Create a Google Sheet with the department account.
+2. **Extensions → Apps Script**, paste `apps-script/Code.gs`, save.
+3. **Deploy → New deployment → Web app**, Execute as *Me*, Who has access *Anyone*. Authorise.
+4. Copy the URL ending in `/exec` into `assets/js/vlab-config.js` as `sheetEndpoint: "https://script.google.com/macros/s/.../exec"`. Commit.
+
+Each saved record sheet then appears on the **Student records** tab, and each faculty entry on the **Session log** tab.
+
+**Weekly link check.** In the repository: **Settings → Actions → General → Workflow permissions → Read and write**,
+save. Then run it once from **Actions → Weekly link check → Run workflow**. It writes `LINK-REPORT.md` every Monday.
+The `.github` folder starts with a dot: on a Mac press Cmd+Shift+. in Finder to see it before dragging it into GitHub.
 
 ## Visitor counter (GoatCounter, free, no cookies)
 
@@ -74,7 +105,7 @@ Edit the files in the **`data`** folder (on GitHub: open the file and click the 
 | `data/training.json` | Faculty Training |
 | `data/projects.json` | Student Projects |
 | `data/performance.json` | Student Performance (charts and tables) |
-| `data/vision_mission.json` | Vision, Mission & PEOs page and the Home page |
+| `data/vision_mission.json` | Vision, Mission, PEOs & PSOs page (`psos` list) and the Home page |
 | `data/nptel.json` | NPTEL: courses, and the Discipline Stars (`stars` list; upload each certificate image to `assets/img/` and put its path in `image`) |
 | `data/achievements.json` | Student Achievements (poster in `assets/img/`) |
 
@@ -82,7 +113,7 @@ Copy an existing entry, paste it, and change the values. Keep the quotes, commas
 exactly as they are. Never put student names, enrolment numbers or phone numbers in these files
 (the only exception is an achievement shown with the student's consent).
 
-The Vision, Mission and PEO text must match the official statements in your SAR word for word.
+The Vision, Mission, PEO and PSO text must match the official statements in your SAR word for word.
 
 ## Putting it online (free, with GitHub Pages)
 

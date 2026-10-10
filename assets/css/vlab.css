@@ -1,0 +1,168 @@
+/* Virtual Lab Console, restyled for the department website.
+   Everything is scoped under .vlab so it does not affect the rest of the site.
+   Colours follow the site palette (base #4C7CA9). */
+.vlab{
+  --paper:#F7FAFC; --panel:#ffffff; --ink:#121F2B; --muted:#49525A; --rule:#DBE3EB;
+  --accent:#4C7CA9; --accent-text:#38628A; --accent-ink:#ffffff; --accent-soft:#E1EBF4; --navy:#172C3F;
+  --ok:#1e7a4c; --ok-soft:#dcefe4; --warn:#8a5d00; --warn-soft:#f6ebcc;
+  --shadow:0 10px 30px rgba(18,31,43,.18);
+  --f-display:"Outfit",Arial,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:8px;
+  color:var(--ink);font:15px/1.55 var(--f-body);
+}
+.vlab [hidden]{display:none!important}
+.vlab a{color:var(--accent-text)}
+.vlab :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.vlab h2,.vlab h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0;line-height:1.15}
+.vlab h2{font-size:1.6rem}
+.vlab h3{font-size:1.2rem}
+.vlab .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.vlab .muted{color:var(--muted)}
+.vlab .label{font:600 .7rem/1.2 "Space Grotesk",var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Tab rail (sticks under the site header) */
+.vlab nav.tabs{position:sticky;top:var(--hdr,7rem);z-index:30;background:var(--panel);border-bottom:1px solid var(--rule);box-shadow:0 1px 6px rgba(18,31,43,.05)}
+.vlab nav.tabs .tabs-row{display:flex;gap:4px;overflow-x:auto}
+.vlab nav.tabs button{appearance:none;border:0;background:none;color:var(--muted);font:600 1rem var(--f-display);padding:14px 14px 11px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.vlab nav.tabs button:hover{color:var(--ink)}
+.vlab nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.vlab nav.tabs .count{font:600 .72rem var(--f-mono);background:var(--accent-soft);color:var(--accent-text);border-radius:9px;padding:1px 7px;margin-left:4px}
+
+.vlab .vlab-main{padding-block:28px 64px}
+.vlab section.view{display:grid;gap:22px}
+
+.vlab .btn{appearance:none;border:1.5px solid var(--rule);background:var(--panel);color:var(--ink);font:600 .92rem var(--f-body);padding:8px 14px;border-radius:var(--r);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
+.vlab .btn:hover{background:var(--accent-soft)}
+.vlab .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.vlab .btn.primary:hover{background:var(--accent-text);border-color:var(--accent-text)}
+.vlab .btn.small{padding:5px 10px;font-size:.84rem}
+.vlab .btn.ghost{border-color:var(--rule)}
+.vlab .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.vlab .row>*{min-width:0;max-width:100%}
+
+.vlab .field{display:grid;gap:5px;min-width:0}
+.vlab .field label{font-weight:600;font-size:.88rem}
+.vlab .field .hint{font-size:.8rem;color:var(--muted)}
+.vlab input,.vlab select,.vlab textarea{font:inherit;color:var(--ink);background:var(--panel);border:1.5px solid var(--rule);border-radius:var(--r);padding:8px 10px;width:100%}
+.vlab textarea{min-height:96px;resize:vertical}
+.vlab input:focus,.vlab select:focus,.vlab textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.vlab .err{color:#A1004E;font-size:.84rem;min-height:1.2em}
+
+.vlab .panel{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);padding:22px;box-shadow:0 1px 3px rgba(18,31,43,.05)}
+
+/* Sign-in */
+.vlab .signin{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:start}
+.vlab .signin form{display:grid;gap:14px}
+.vlab .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.vlab .how{display:grid;gap:12px;margin:0;padding:0;list-style:none;counter-reset:s}
+.vlab .how li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.vlab .how li::before{counter-increment:s;content:counter(s);font:700 1.05rem/32px var(--f-display);text-align:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff}
+.vlab .how b{display:block}
+@media (max-width:760px){.vlab .signin{grid-template-columns:1fr}}
+@media (max-width:420px){.vlab .grid2{grid-template-columns:minmax(0,1fr)}}
+
+/* Student strip */
+.vlab .strip{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;padding:12px 16px;border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:var(--r);background:var(--panel)}
+.vlab .strip .kv{display:grid}
+.vlab .strip .kv span{font-family:var(--f-mono);font-size:.95rem}
+.vlab .strip .spacer{flex:1}
+.vlab .progress{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;min-width:120px}
+.vlab .progress i{display:block;height:100%;background:var(--ok)}
+
+/* Course blocks */
+.vlab .course{display:grid;gap:10px}
+.vlab .course-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;border-bottom:2px solid var(--accent);padding-bottom:6px}
+.vlab .course-head h3{flex:1;min-width:0}
+.vlab .chip{font:600 .72rem/1 var(--f-mono);letter-spacing:.03em;padding:4px 7px;border-radius:4px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap;text-decoration:none}
+.vlab .chip.support{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+.vlab .chip.done{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.vlab .chip.lab{border-color:var(--accent);color:var(--accent-ink);background:var(--accent)}
+.vlab .note{font-size:.86rem;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:4px}
+
+.vlab details.lab{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r)}
+.vlab details.lab>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px}
+.vlab details.lab>summary::-webkit-details-marker{display:none}
+.vlab details.lab>summary .lid{font:700 1.05rem var(--f-display);min-width:44px;text-align:center;border-radius:6px;padding:3px 6px;background:var(--navy);color:#fff}
+.vlab details.lab>summary .lname{min-width:0}
+.vlab details.lab>summary .lname b{display:block;font-weight:600}
+.vlab details.lab>summary .lname small{color:var(--muted)}
+.vlab details.lab>summary .caret{font-family:var(--f-mono);color:var(--muted);transition:transform .15s}
+.vlab details.lab[open]>summary .caret{transform:rotate(90deg)}
+.vlab ol.exps{list-style:none;margin:0;padding:0 0 6px;border-top:1px solid var(--rule)}
+.vlab ol.exps li{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px dashed var(--rule)}
+.vlab ol.exps li:last-child{border-bottom:0}
+.vlab ol.exps .code{font:500 .78rem var(--f-mono);color:var(--muted)}
+.vlab ol.exps .t{min-width:0}
+.vlab ol.exps .acts{display:flex;gap:6px;align-items:center}
+@media (max-width:520px){.vlab ol.exps li{grid-template-columns:1fr auto}.vlab ol.exps .code{grid-column:1/-1}}
+
+/* Catalogue */
+.vlab .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.vlab .filters input{max-width:360px}
+.vlab .seg{display:flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.vlab .seg button{appearance:none;border:0;border-right:1px solid var(--rule);background:var(--panel);color:var(--ink);font:500 .84rem var(--f-body);padding:7px 12px;cursor:pointer}
+.vlab .seg button:last-child{border-right:0}
+.vlab .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.vlab .catalog{display:grid;gap:10px}
+.vlab .meta{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+
+/* Stats */
+.vlab .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--rule);border-radius:var(--r);background:var(--panel)}
+.vlab .stats div{padding:12px 16px;border-right:1px solid var(--rule)}
+.vlab .stats div:last-child{border-right:0}
+.vlab .stats b{display:block;font:700 2rem/1.1 var(--f-display);color:var(--navy)}
+@media (max-width:600px){.vlab .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.vlab .stats div:nth-child(2){border-right:0}.vlab .stats div:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+
+/* Tables */
+.vlab .tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--r);background:var(--panel)}
+.vlab table{border-collapse:collapse;width:100%;font-size:.88rem}
+.vlab th,.vlab td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.vlab th{font:600 .7rem "Space Grotesk",var(--f-body);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);white-space:nowrap;background:var(--accent-soft)}
+.vlab tr:last-child td{border-bottom:0}
+.vlab td.num{font-family:var(--f-mono);white-space:nowrap}
+.vlab .empty{padding:28px 16px;text-align:center;color:var(--muted)}
+
+/* Experiment workspace (slides over the page, above the site header) */
+.vlab .overlay{position:fixed;inset:0;background:rgba(18,31,43,.5);z-index:60;display:flex;justify-content:flex-end}
+.vlab .ws{background:var(--paper);width:min(720px,100%);height:100%;overflow-y:auto;box-shadow:var(--shadow);padding:0 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.vlab .ws-head{position:sticky;top:0;background:var(--navy);color:#fff;padding:calc(14px + env(safe-area-inset-top,0px)) 20px 14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;z-index:1}
+.vlab .ws-head .label{color:#A2B3C3}
+.vlab .ws-head h2{font-size:1.5rem}
+.vlab .ws-head .btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.vlab .ws-body{padding:18px 20px;display:grid;gap:16px}
+.vlab .step{display:grid;grid-template-columns:36px 1fr;gap:12px}
+.vlab .step .n{font:700 1.15rem/34px var(--f-display);text-align:center;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--rule);background:var(--panel);color:var(--muted)}
+.vlab .step.on .n{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.vlab .step .body{display:grid;gap:10px;min-width:0;padding-bottom:16px;border-bottom:1px dashed var(--rule)}
+.vlab .step:last-child .body{border-bottom:0}
+.vlab .checks{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.vlab .checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.vlab .checks input{width:auto;margin-top:4px;accent-color:var(--accent)}
+.vlab .timer{font:600 1.4rem var(--f-mono);color:var(--navy)}
+.vlab .scale{display:flex;flex-wrap:wrap;gap:6px}
+.vlab .scale button{appearance:none;font:500 .86rem var(--f-body);border:1.5px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:var(--r);padding:6px 10px;cursor:pointer}
+.vlab .scale button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+
+.vlab .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 16px;border-radius:var(--r);font-weight:500;z-index:70;max-width:calc(100% - 32px)}
+
+.vlab .two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:800px){.vlab .two{grid-template-columns:1fr}}
+.vlab ul.plain{margin:0;padding-left:18px;display:grid;gap:6px;list-style:disc}
+
+/* Print: the record sheet only */
+#printArea{display:none}
+@media print{
+  body{background:#fff;color:#000}
+  body>*:not(#printArea){display:none!important}
+  #printArea{display:block;font:11pt/1.45 "Inter",Arial,sans-serif;color:#000}
+  #printArea .pr{page-break-after:always;border:1.5px solid #000;padding:14px}
+  #printArea .pr:last-child{page-break-after:auto}
+  #printArea h1{font:700 18pt "Outfit",Arial,sans-serif;text-transform:uppercase;margin:0 0 4px}
+  #printArea table{width:100%;border-collapse:collapse;margin-top:8px}
+  #printArea th,#printArea td{border:1px solid #000;padding:6px 8px;color:#000;font-size:10pt;text-align:left;vertical-align:top}
+  #printArea th{width:30%;font-weight:600}
+  #printArea .sign{display:flex;justify-content:space-between;margin-top:36px}
+}
+@media (prefers-reduced-motion:reduce){.vlab *{transition:none!important}}
