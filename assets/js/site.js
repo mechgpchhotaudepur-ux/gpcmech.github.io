@@ -114,3 +114,16 @@
     toggle.querySelector(".material-symbols-outlined").textContent = open ? "close" : "menu";
   });
 })();
+
+/* Desktop dropdown menus: also open on click/tap (hover and keyboard focus work via CSS) */
+document.querySelectorAll(".dd-menu").forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var panel = btn.nextElementSibling, open = panel.classList.toggle("!block");
+    btn.setAttribute("aria-expanded", open);
+    document.querySelectorAll(".dd-panel.\\!block").forEach(function (p) { if (p !== panel) { p.classList.remove("!block"); p.previousElementSibling.setAttribute("aria-expanded", "false"); } });
+  });
+});
+document.addEventListener("click", function () {
+  document.querySelectorAll(".dd-panel.\\!block").forEach(function (p) { p.classList.remove("!block"); p.previousElementSibling.setAttribute("aria-expanded", "false"); });
+});

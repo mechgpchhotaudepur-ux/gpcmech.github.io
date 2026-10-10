@@ -1,0 +1,86 @@
+{
+ "laboratories": [
+  {
+   "laboratory": "Turning Shop",
+   "room": "042"
+  },
+  {
+   "laboratory": "Machine Shop",
+   "room": "045"
+  },
+  {
+   "laboratory": "Project Room",
+   "room": "048"
+  },
+  {
+   "laboratory": "Welding Shop",
+   "room": "049"
+  },
+  {
+   "laboratory": "Carpentry Shop",
+   "room": "052"
+  },
+  {
+   "laboratory": "Fitting Shop",
+   "room": "055"
+  },
+  {
+   "laboratory": "CAD/CAM Laboratory",
+   "room": "141"
+  },
+  {
+   "laboratory": "F.M.H.M Laboratory",
+   "room": "059"
+  },
+  {
+   "laboratory": "Mechanical Drawing Hall",
+   "room": "060"
+  },
+  {
+   "laboratory": "Computer Laboratory",
+   "room": "101"
+  },
+  {
+   "laboratory": "M&I Laboratory",
+   "room": "140"
+  },
+  {
+   "laboratory": "Thermal Engineering (TE) Laboratory",
+   "room": "040"
+  }
+ ],
+ "additional_facilities": [
+  {
+   "facility": "Departmental Library",
+   "details": "Collection of books"
+  },
+  {
+   "facility": "Departmental Website",
+   "details": "Department website for stakeholders"
+  },
+  {
+   "facility": "Graphical Chart and Models",
+   "details": "Subject-related charts and models available for academic learning"
+  },
+  {
+   "facility": "Common Internet Facility",
+   "details": "100 Mbps BSNL Fiber optic line, Namo Wifi"
+  },
+  {
+   "facility": "Tool Bank",
+   "details": "Basic workshop tools and materials provided to students."
+  },
+  {
+   "facility": "3D Printing and Rapid Prototyping Cell",
+   "details": "Go3D Artish 300 Pro FDM printer, build volume 300 x 300 x 300 mm; purchased through GeM (bid GEM/2024/B/5702597) for Rs 2,10,000, approved by the District Level Purchase Committee on 28/01/2025"
+  },
+  {
+   "facility": "CNC Simulator for turning",
+   "details": "One simulator; financial approval 07/01/2026, ordered 19/01/2026, installed 19/02/2026; Rs 2,98,810"
+  }
+ ],
+ "computing": {
+  "terminals": 53,
+  "networking": "BSNL broadband, Namo WiFi"
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "note": "Source: department SAR, Criterion 4 (batches by entry year). API (final year) = mean grade point of successful students x share of successful students.",
+ "intake": [
+  {
+   "year": "2021-22",
+   "sanctioned": 120,
+   "admitted_first_year": 33,
+   "lateral_entry": 52,
+   "enrolment_ratio_percent": 27.5
+  },
+  {
+   "year": "2022-23",
+   "sanctioned": 60,
+   "admitted_first_year": 42,
+   "lateral_entry": 16,
+   "enrolment_ratio_percent": 70.0
+  },
+  {
+   "year": "2023-24",
+   "sanctioned": 60,
+   "admitted_first_year": 40,
+   "lateral_entry": 21,
+   "enrolment_ratio_percent": 66.7
+  },
+  {
+   "year": "2024-25",
+   "sanctioned": 60,
+   "admitted_first_year": 60,
+   "lateral_entry": 14,
+   "enrolment_ratio_percent": 100.0
+  },
+  {
+   "year": "2025-26",
+   "sanctioned": 60,
+   "admitted_first_year": 44,
+   "lateral_entry": 5,
+   "enrolment_ratio_percent": 73.3
+  },
+  {
+   "year": "2026-27",
+   "sanctioned": 60,
+   "admitted_first_year": 57,
+   "lateral_entry": 0,
+   "enrolment_ratio_percent": 95.0
+  }
+ ],
+ "success": [
+  {
+   "batch": "2021 entry",
+   "students": 85,
+   "graduated_in_stipulated_period": 27,
+   "success_rate_percent": 31.8
+  },
+  {
+   "batch": "2022 entry",
+   "students": 58,
+   "graduated_in_stipulated_period": 17,
+   "success_rate_percent": 29.3
+  },
+  {
+   "batch": "2023 entry",
+   "students": 61,
+   "graduated_in_stipulated_period": 18,
+   "success_rate_percent": 29.5
+  }
+ ],
+ "api": [
+  {
+   "batch": "2021 entry",
+   "final_year_api": 5.79
+  },
+  {
+   "batch": "2022 entry",
+   "final_year_api": 5.33
+  },
+  {
+   "batch": "2023 entry",
+   "final_year_api": 4.73
+  }
+ ],
+ "placement": [
+  {
+   "batch": "2021 entry",
+   "final_year_students": 28,
+   "placed": 18,
+   "higher_studies": 5,
+   "entrepreneurs": 0
+  },
+  {
+   "batch": "2022 entry",
+   "final_year_students": 20,
+   "placed": 14,
+   "higher_studies": 1,
+   "entrepreneurs": 0
+  },
+  {
+   "batch": "2023 entry",
+   "final_year_students": 23,
+   "placed": 9,
+   "higher_studies": 5,
+   "entrepreneurs": 0
+  }
+ ]
+}

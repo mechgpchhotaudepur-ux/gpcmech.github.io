@@ -1,0 +1,209 @@
+[
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 1,
+  "title": "Agriculture Pesticides Spray Pump",
+  "guide": "Shri H. S. Chaudhari",
+  "students": 6,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 2,
+  "title": "Four Wheel Electric Cycle",
+  "guide": "Shri P. J. Vasava",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 3,
+  "title": "Eco Friendly Road & Dust Cleaning Machine",
+  "guide": "Shri D. M. Tadvi",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 4,
+  "title": "360 Degree Rotating Vehicle",
+  "guide": "Shri M. N. Madia",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 5,
+  "title": "Contactless Air Conveyor For Faster Goods Movement",
+  "guide": "Shri K. N. Patel",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 6,
+  "title": "Solar Panel Cleaning Robot",
+  "guide": "Shri A. A. Prajapati",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 7,
+  "title": "Automatic Lift Door Mechanism",
+  "guide": "Shri D. V. Chaudhari",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 8,
+  "title": "360 Degree Flexible Drill Machine",
+  "guide": "Shri V. C. Chaudhari",
+  "students": 6,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 9,
+  "title": "Sensor Assisted Lifting Table",
+  "guide": "Shri J. M. Parmar",
+  "students": 4,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 10,
+  "title": "Modification Of Solar Reciprocating Pump",
+  "guide": "Shri V. P. Sarvaiya",
+  "students": 4,
+  "report_available": false
+ },
+ {
+  "academic_year": "2022-23",
+  "course": "Project-II",
+  "group": 11,
+  "title": "Solar Powered Floor Mill With 360 Degree Rotated Panel",
+  "guide": "Shri D. D. Rathwa",
+  "students": 4,
+  "report_available": false
+ },
+ {
+  "academic_year": "2023-24",
+  "course": "Project-II",
+  "group": 1,
+  "title": "Power Operated Multi Operation Machine",
+  "guide": "Shri V. C. Chaudhari",
+  "students": 5,
+  "report_available": true
+ },
+ {
+  "academic_year": "2023-24",
+  "course": "Project-II",
+  "group": 2,
+  "title": "High Speed 4 Way Hacksaw Machine",
+  "guide": "Shri M. N. Madia",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2023-24",
+  "course": "Project-II",
+  "group": 3,
+  "title": "Pull Down Exercise Machine",
+  "guide": "Shri P. J. Vasava",
+  "students": 6,
+  "report_available": false
+ },
+ {
+  "academic_year": "2023-24",
+  "course": "Project-II",
+  "group": 4,
+  "title": "Highway Turbine with Solar System",
+  "guide": "Shri V. P. Sarvaiya",
+  "students": 5,
+  "report_available": true
+ },
+ {
+  "academic_year": "2023-24",
+  "course": "Project-II",
+  "group": 5,
+  "title": "Portable Refrigerator",
+  "guide": "Shri J. M. Parmar",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2023-24",
+  "course": "Project-II",
+  "group": 9,
+  "title": "Solar Air Cooler",
+  "guide": "Shri A. A. Prajapati",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2024-25",
+  "course": "Project-I",
+  "group": 1,
+  "title": "Solar Panel Cleaning System",
+  "guide": "Shri H. S. Chaudhari",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2024-25",
+  "course": "Project-I",
+  "group": 2,
+  "title": "360 Degree Rotating Fire Protection System",
+  "guide": "Shri D. V. Chaudhari",
+  "students": 6,
+  "report_available": false
+ },
+ {
+  "academic_year": "2024-25",
+  "course": "Project-I",
+  "group": 3,
+  "title": "Industrial Automatic Hammer",
+  "guide": "Shri A. A. Prajapati",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2024-25",
+  "course": "Project-I",
+  "group": 4,
+  "title": "Green Energy",
+  "guide": "Shri J. M. Parmar",
+  "students": 5,
+  "report_available": false
+ },
+ {
+  "academic_year": "2025-26",
+  "course": "Project-II",
+  "group": 1,
+  "title": "Regenerative Braking System",
+  "guide": "Shri V. P. Sarvaiya",
+  "students": 5,
+  "report_available": true
+ },
+ {
+  "academic_year": "2025-26",
+  "course": "Project-II",
+  "group": 2,
+  "title": "Multipurpose Agriculture Robot",
+  "guide": "Shri V. C. Chaudhari",
+  "students": 5,
+  "report_available": true
+ }
+]
