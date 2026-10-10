@@ -82,7 +82,7 @@ window.DOWNLOADS = [
     link: "https://drive.google.com/drive/folders/1RmLWJbUnPERMb-mDbpRmbgB1lHmcWy8g?usp=share_link" },
   { title: "Class Coordinator List", text: "Coordinators for each semester", icon: "groups",
     link: "https://drive.google.com/drive/folders/14TWtEp8hNYTEMF1RaG4pyEvvmJv26wYz?usp=sharing" },
-  { title: "Registration Form", text: "Student registration forms", icon: "assignment",
+  { title: "New Student Registration Form", text: "Student registration forms", icon: "assignment",
     link: "https://drive.google.com/drive/folders/1nckHvtN_qTqWdrHODoB9XGr3c4BR8mb-?usp=sharing" },
   { title: "Syllabus (Old)", text: "Previous curriculum, for backlog students", icon: "history_edu",
     link: "https://drive.google.com/drive/folders/1-Cshtw7Cb299ECrHz_BXtWiFJ-9QkX7d?usp=share_link" },
