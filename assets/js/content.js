@@ -7,6 +7,13 @@
    Newest items go at the TOP of each list. Keep the commas and quotes.
    ===================================================================== */
 
+/* NOTICES FROM A GOOGLE SHEET
+   Paste the sheet's "Publish to web" CSV link between the quotes below, e.g.
+   "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
+   Once it is set, notices come from the sheet and the NOTICES list below is only
+   used as a backup if the sheet can't be reached. Leave it "" to use the list. */
+window.NOTICES_SHEET_CSV = "";
+
 /* Notice fields:
      date:     "2026-10-10" (YYYY-MM-DD) or "" if no date
      category: "Exam" | "Academic" | "Workshop" | "Admission" | "General"

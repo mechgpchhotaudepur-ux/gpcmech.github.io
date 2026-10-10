@@ -65,6 +65,6 @@
       }
       apply();
     },
-    colors: { blue: "#2563EB", navy: "#131b2e", indigo: "#4059aa", gold: "#F5A524", green: "#10B981", grid: "#E2E8F0", text: "#45464d" },
+    colors: { blue: "#4C7CA9", navy: "#172C3F", indigo: "#38628A", gold: "#F5A524", green: "#10B981", grid: "#DBE3EB", text: "#49525A" },
   };
 })(window);

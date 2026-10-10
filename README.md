@@ -1,26 +1,101 @@
-# Department data pages: how to put them on the website
+# Mechanical Engineering Department website, GP Chhotaudepur
 
-What is in this folder
-- `staff.html`, `student-performance.html`, `faculty-training.html`, `projects.html`, `labs.html`, `vision-mission.html`, `nptel.html`, `student-achievements.html`, `index.html` (link cards)
-- `assets/img/` (NPTEL star certificate and the student achievement poster, resized for the web)
-- `assets/dept-data.css` (colours are variables at the top), `assets/dept-data.js` (small helpers)
-- `data/*.json`: the data (edit these to change what the pages show)
+A six-page website built from the Google Stitch design, using the content from
+https://sites.google.com/view/gpchhotaudepurmech/
 
-Easiest way to upload (GitHub website, no tools needed)
-1. Open your repository on github.com, go to the folder where your site's pages are (the root, or `docs/`).
-2. Click **Add file > Upload files**. Drag in the whole contents of this folder (the HTML files, `assets`, `data`). GitHub keeps the folders.
-3. Write a commit message such as "Add department data pages" and click **Commit changes**.
-4. Wait 1 to 2 minutes (GitHub Pages rebuilds). Open `https://<your-site>/staff.html` to check.
-5. Add links to the new pages in your menu (copy the `<nav>` line from any page, or the cards in `index.html`). If your site already has an `index.html`, do NOT overwrite it: skip this file and copy the cards.
+| Page | File |
+|---|---|
+| Home | `index.html` |
+| Vision, Mission & PEOs | `vision-mission.html` |
+| Download | `download.html` |
+| Notice Board | `notice-board.html` |
+| Activity | `activity.html` |
+| Rules & Regulation | `rules-regulation.html` |
+| Faculty & Staff | `staff.html` |
+| Faculty Training | `faculty-training.html` |
+| Laboratories | `labs.html` |
+| Student Projects | `projects.html` |
+| Student Performance | `student-performance.html` |
+| NPTEL | `nptel.html` |
+| Student Achievements | `student-achievements.html` |
 
-Test on your computer first (optional)
-- Open a terminal in this folder and run `python3 -m http.server 8000`, then open http://localhost:8000/staff.html. (Opening the file by double-click will not load the data: browsers block it.)
+**Previewing on your computer:** most pages open with a double-click. The data pages
+(Vision & PEOs, Staff, Training, Laboratories, Projects, Performance, NPTEL, Achievements) load their numbers from the `data`
+folder, which browsers block on double-click. They work once the site is online. To preview
+them locally, open a terminal in this folder, run `python3 -m http.server 8000`, then go to
+http://localhost:8000.
 
-To change the data later
-- Edit the JSON file in GitHub (pencil icon) and commit, or ask Claude to regenerate it. Keep student names (except the achievement poster, shown with consent), enrolment numbers and phone numbers out of public files.
+## Notices from a Google Sheet
 
-To match your site's design
-- Open `PROMPT_for_Claude.txt`, paste it into the Claude session that built your site, and add the folder. It will restyle the pages with your header, footer and menu.
+1. Sign in to Google Drive as **mechgpchhotaudepur@gmail.com** and upload `Mechanical_Notices.xlsx`.
+   Open it, then choose **File → Save as Google Sheets**. Use the new Google Sheet from now on.
+2. In the Google Sheet: **File → Share → Publish to web**. Under *Link*, choose the **Notices** tab
+   (not "Entire document") and **Comma-separated values (.csv)**, then click **Publish** and copy the link.
+3. In GitHub, open `assets/js/content.js`, click the pencil icon, and paste the link between the quotes in
+   `window.NOTICES_SHEET_CSV = "";`. Commit.
 
-Check before publishing
-- `student-performance.html` shows real results (on-time graduation is about 30 percent). Decide whether you want to publish it, or delete that page and its link.
+From then on, add a row to the sheet (Date, Category, Title, Details, Link, Show) and it appears on the
+Notice Board and the Home page within about 5 minutes. Set **Show** to "No" to hide a notice without deleting it.
+If the sheet ever can't be reached, the website shows the `NOTICES` list in `content.js` instead.
+
+## Updating notices, activities and downloads
+
+You only need to edit one file: **`assets/js/content.js`**. It holds three lists:
+
+- `NOTICES`: add a new notice at the top. Fill in a date (`"2026-11-02"`), a category
+  (Exam / Academic / Workshop / Admission / General), a title, a short text, and a link to the PDF or Drive file.
+- `ACTIVITIES`: add the YouTube video ID. For `https://www.youtube.com/watch?v=jBYtiCcspv0`,
+  the ID is `jBYtiCcspv0`. Then add a title, category and year. Thumbnails appear automatically.
+- `DOWNLOADS`: add a title and a Google Drive link.
+
+Copy an existing entry, paste it at the top of the list, and change the text. Keep the
+quotes and commas. The Home page picks up the newest items automatically.
+
+## Updating staff, labs, training, projects and results
+
+Edit the files in the **`data`** folder (on GitHub: open the file and click the pencil icon):
+
+| File | Shown on |
+|---|---|
+| `data/staff.json` | Faculty & Staff (and the faculty count on Home) |
+| `data/labs.json` | Laboratories |
+| `data/training.json` | Faculty Training |
+| `data/projects.json` | Student Projects |
+| `data/performance.json` | Student Performance (charts and tables) |
+| `data/vision_mission.json` | Vision, Mission & PEOs page and the Home page |
+| `data/nptel.json` | NPTEL: courses, and the Discipline Stars (`stars` list; upload each certificate image to `assets/img/` and put its path in `image`) |
+| `data/achievements.json` | Student Achievements (poster in `assets/img/`) |
+
+Copy an existing entry, paste it, and change the values. Keep the quotes, commas and brackets
+exactly as they are. Never put student names, enrolment numbers or phone numbers in these files
+(the only exception is an achievement shown with the student's consent).
+
+The Vision, Mission and PEO text must match the official statements in your SAR word for word.
+
+## Putting it online (free, with GitHub Pages)
+
+1. Create a free account at github.com, then create a new **public** repository,
+   for example `gpc-mechanical`.
+2. Choose **Add file → Upload files**, drag in everything from this folder
+   (the `.html` files and the `assets` folder), and commit.
+3. Go to **Settings → Pages**. Under *Source*, choose **Deploy from a branch**, select `main`
+   and `/ (root)`, then click Save.
+4. After about a minute the site is live at `https://<your-username>.github.io/gpc-mechanical/`.
+
+Later edits, such as changing `content.js`, can be made from GitHub's web editor
+(use the pencil icon). The site updates within a minute.
+
+**Keeping the old address working.** Leave the Google Site published, but replace its
+Home page content with a short "This site has moved" note and a button linking to the
+new address. That way old links shared with students still lead somewhere.
+
+## Logos and photos
+
+- Department logo: `assets/img/dept-logo.png` (header, footer), `dept-logo-512.png` (phone home-screen
+  and share preview) and `favicon.png` (browser tab).
+
+To change a logo, replace the file and keep the same name. A PNG with a transparent background looks best.
+
+
+The Home page group photo is `assets/img/department-group-1600.jpg` (plus an 800px version
+for phones). To change it, replace both files and keep the same names.

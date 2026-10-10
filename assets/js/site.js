@@ -12,7 +12,8 @@
   };
 
   function noticeHTML(n) {
-    var d = n.date ? new Date(n.date + "T00:00:00") : null;
+    var d = parseDate(n.date);
+    var isNew = d && (Date.now() - d.getTime()) < 7 * 864e5 && d.getTime() <= Date.now() + 864e5;
     var dateBox = d && !isNaN(d)
       ? '<span class="block font-display text-title-md">' + String(d.getDate()).padStart(2, "0") +
         '</span><span class="block font-tech text-caption uppercase text-on-surface-variant">' +
@@ -23,11 +24,67 @@
     return "<" + tag + href + ' class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-start gap-space-md">' +
       '<div class="bg-surface-container text-on-surface p-space-xs rounded-lg text-center shrink-0 w-14 min-h-[3.25rem] flex flex-col items-center justify-center">' + dateBox + "</div>" +
       '<div class="flex-1 min-w-0 space-y-1"><span class="inline-block px-space-xs py-0.5 rounded text-caption font-tech text-on-primary uppercase ' +
-      (CAT_COLORS[n.category] || "bg-secondary") + '">' + esc(n.category) + "</span>" +
+      (CAT_COLORS[n.category] || "bg-secondary") + '">' + esc(n.category || "General") + "</span>" +
+      (isNew ? ' <span class="inline-block px-space-xs py-0.5 rounded text-caption font-tech uppercase bg-tertiary-fixed text-on-surface">New</span>' : "") +
       '<h4 class="font-body text-title-md text-on-surface">' + esc(n.title) + "</h4>" +
       (n.text ? '<p class="text-body-sm text-on-surface-variant">' + esc(n.text) + "</p>" : "") +
       "</div>" + (n.link ? '<span class="material-symbols-outlined text-on-surface-variant self-center">open_in_new</span>' : "") +
       "</" + tag + ">";
+  }
+
+  /* ---- Notices: from the Google Sheet (NOTICES_SHEET_CSV in content.js), else the NOTICES list ---- */
+  // Accepts 2026-10-10, 10/10/2026, 10-10-2026, 10.10.2026 (day first), "10 Oct 2026", "Oct 10, 2026"
+  function parseDate(v) {
+    if (!v) return null;
+    if (v instanceof Date) return isNaN(v) ? null : v;
+    v = String(v).trim(); var m;
+    if ((m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return new Date(+m[1], m[2] - 1, +m[3]);
+    if ((m = v.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})$/))) return new Date(m[3].length === 2 ? 2000 + +m[3] : +m[3], m[2] - 1, +m[1]);
+    var t = Date.parse(v); return isNaN(t) ? null : new Date(t);
+  }
+  function parseCSV(text) {
+    var rows = [], row = [], f = "", q = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"') q = true;
+      else if (c === ",") { row.push(f); f = ""; }
+      else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+      else f += c;
+    }
+    if (f || row.length) { row.push(f); rows.push(row); }
+    return rows;
+  }
+  function fromSheet(text) {
+    var rows = parseCSV(text).filter(function (r) { return r.some(function (c) { return c.trim(); }); });
+    if (!rows.length) return [];
+    var head = rows.shift().map(function (h) { return h.trim().toLowerCase(); });
+    var col = function (names) { for (var i = 0; i < names.length; i++) { var k = head.indexOf(names[i]); if (k > -1) return k; } return -1; };
+    var c = { date: col(["date"]), category: col(["category", "type"]), title: col(["title", "notice", "subject"]),
+      text: col(["details", "description", "text"]), link: col(["link", "file link", "url", "file"]), show: col(["show", "show on website", "visible"]) };
+    var get = function (r, k) { return c[k] > -1 ? (r[c[k]] || "").trim() : ""; };
+    return rows.map(function (r) {
+      return { date: get(r, "date"), category: get(r, "category"), title: get(r, "title"), text: get(r, "text"), link: get(r, "link"), show: get(r, "show") };
+    }).filter(function (n) { return n.title && !/^(no|n|hide|false)$/i.test(n.show); });
+  }
+  function newestFirst(list) {
+    return list.map(function (n, i) { return [n, i]; }).sort(function (a, b) {
+      var da = parseDate(a[0].date), db = parseDate(b[0].date);
+      if (da && db && da - db) return db - da;
+      if (da && !db) return -1; if (db && !da) return 1;
+      return a[1] - b[1];
+    }).map(function (x) { return x[0]; });
+  }
+  var noticesPromise;
+  function loadNotices() {
+    if (noticesPromise) return noticesPromise;
+    var fallback = function () { return newestFirst(window.NOTICES || []); };
+    var url = window.NOTICES_SHEET_CSV;
+    if (!url) return (noticesPromise = Promise.resolve(fallback()));
+    return (noticesPromise = fetch(url + (url.indexOf("?") > -1 ? "&" : "?") + "_=" + Math.floor(Date.now() / 60000))
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (t) { if (/^\s*</.test(t)) throw new Error("not CSV"); return newestFirst(fromSheet(t)); })
+      .catch(function () { return fallback(); }));
   }
 
   function activityHTML(a) {
@@ -41,7 +98,7 @@
       (a.year ? '<span class="text-on-surface-variant">• ' + esc(a.year) + "</span>" : "") + "</div>" +
       '<h3 class="font-body text-title-md text-on-surface">' + esc(a.title) + "</h3>" +
       (a.text ? '<p class="text-body-sm text-on-surface-variant">' + esc(a.text) + "</p>" : "") +
-      (a.link ? '<a class="inline-flex items-center gap-1 text-body-sm text-tech-blue hover:underline" href="' + esc(a.link) + '" target="_blank" rel="noopener">Visit website<span class="material-symbols-outlined text-[16px]">open_in_new</span></a>' : "") +
+      (a.link ? '<a class="inline-flex items-center gap-1 text-body-sm text-secondary hover:underline" href="' + esc(a.link) + '" target="_blank" rel="noopener">Visit website<span class="material-symbols-outlined text-[16px]">open_in_new</span></a>' : "") +
       "</div></article>";
   }
 
@@ -61,9 +118,11 @@
     var limit = parseInt(el.getAttribute("data-limit") || "0", 10);
     var cut = function (arr) { return limit ? arr.slice(0, limit) : arr; };
     if (type === "notices") {
-      var list = window.NOTICES || [];
-      el.innerHTML = list.length ? cut(list).map(noticeHTML).join("")
-        : '<p class="p-space-md bg-surface-container-lowest rounded-xl text-on-surface-variant">No notices right now. Please check back later.</p>';
+      el.innerHTML = '<p class="p-space-md bg-surface-container-lowest rounded-xl text-on-surface-variant">Loading notices…</p>';
+      loadNotices().then(function (list) {
+        el.innerHTML = list.length ? cut(list).map(noticeHTML).join("")
+          : '<p class="p-space-md bg-surface-container-lowest rounded-xl text-on-surface-variant">No notices right now. Please check back later.</p>';
+      });
     } else if (type === "activities") {
       el.innerHTML = cut(window.ACTIVITIES || []).map(activityHTML).join("");
     } else if (type === "downloads") {
