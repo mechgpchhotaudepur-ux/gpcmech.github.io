@@ -186,3 +186,20 @@ document.querySelectorAll(".dd-menu").forEach(function (btn) {
 document.addEventListener("click", function () {
   document.querySelectorAll(".dd-panel.\\!block").forEach(function (p) { p.classList.remove("!block"); p.previousElementSibling.setAttribute("aria-expanded", "false"); });
 });
+
+/* Visitor counter: records the visit and shows the total (GoatCounter; code set in content.js) */
+(function () {
+  var code = (window.VISIT_COUNTER_CODE || "").trim();
+  if (!code || location.protocol === "file:") return;
+  var base = "https://" + code + ".goatcounter.com";
+  var s = document.createElement("script");
+  s.async = true; s.src = "https://gc.zgo.at/count.js"; s.setAttribute("data-goatcounter", base + "/count");
+  document.head.appendChild(s);
+  fetch(base + "/counter/TOTAL.json").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+    if (!d || d.count == null) return;
+    var box = document.getElementById("visit-counter"), n = document.getElementById("visit-count");
+    if (!box || !n) return;
+    n.textContent = String(d.count).trim();
+    box.classList.remove("hidden"); box.classList.add("inline-flex");
+  }).catch(function () {});
+})();

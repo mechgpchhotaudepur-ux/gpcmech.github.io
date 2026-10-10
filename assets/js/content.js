@@ -7,6 +7,11 @@
    Newest items go at the TOP of each list. Keep the commas and quotes.
    ===================================================================== */
 
+/* VISITOR COUNTER (GoatCounter, free, no cookies)
+   Put your GoatCounter code between the quotes, e.g. "gpcmech" for gpcmech.goatcounter.com.
+   Leave it "" and no visits are counted and no counter is shown. */
+window.VISIT_COUNTER_CODE = "gpcmech";
+
 /* NOTICES FROM A GOOGLE SHEET
    Paste the sheet's "Publish to web" CSV link between the quotes below, e.g.
    "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
@@ -82,5 +87,3 @@ window.DOWNLOADS = [
   { title: "Lab Manuals (Old Syllabus)", text: "Practical manuals as per the old syllabus", icon: "inventory_2",
     link: "https://drive.google.com/drive/folders/1pKQ_n2MduTtWDhCy5pOlbbPE42BVnEJU?usp=share_link" },
 ];
-   /* VISITOR COUNTER (GoatCounter, free, no cookies) */
-   window.VISIT_COUNTER_CODE = "gpcmech";

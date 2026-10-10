@@ -25,6 +25,18 @@ folder, which browsers block on double-click. They work once the site is online.
 them locally, open a terminal in this folder, run `python3 -m http.server 8000`, then go to
 http://localhost:8000.
 
+## Visitor counter (GoatCounter, free, no cookies)
+
+1. Go to https://www.goatcounter.com and sign up with **mechgpchhotaudepur@gmail.com**. Choose a code,
+   e.g. `gpcmech`. Your statistics dashboard will be at `https://gpcmech.goatcounter.com`.
+2. In GoatCounter: **Settings** → tick **"Allow adding visitor counts on your website"** → Save.
+3. In GitHub, open `assets/js/content.js` and put the code between the quotes:
+   `window.VISIT_COUNTER_CODE = "gpcmech";`. Commit.
+
+Every page then records its visits, and the footer shows **Visitors: N**. The total can lag by up to a
+few hours, because GoatCounter caches it. The dashboard shows full details (pages, dates, devices,
+countries). Until a code is set, nothing is counted and no counter is shown.
+
 ## Notices from a Google Sheet
 
 1. Sign in to Google Drive as **mechgpchhotaudepur@gmail.com** and upload `Mechanical_Notices.xlsx`.
