@@ -82,3 +82,7 @@ window.DOWNLOADS = [
   { title: "Lab Manuals (Old Syllabus)", text: "Practical manuals as per the old syllabus", icon: "inventory_2",
     link: "https://drive.google.com/drive/folders/1pKQ_n2MduTtWDhCy5pOlbbPE42BVnEJU?usp=share_link" },
 ];
+
+
+   /* VISITOR COUNTER (GoatCounter, free, no cookies) */
+   window.VISIT_COUNTER_CODE = "gpcmech";
