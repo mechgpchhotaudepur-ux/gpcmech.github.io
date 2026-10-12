@@ -19,6 +19,7 @@ https://sites.google.com/view/gpchhotaudepurmech/
 | NPTEL | `nptel.html` |
 | Student Achievements | `student-achievements.html` |
 | Virtual Labs | `virtual-lab.html` |
+| Training & Placement | `placement.html` |
 
 **Previewing on your computer:** most pages open with a double-click. The data pages
 (Vision & PEOs, Staff, Training, Laboratories, Projects, Performance, NPTEL, Achievements) load their numbers from the `data`
@@ -94,6 +95,13 @@ You only need to edit one file: **`assets/js/content.js`**. It holds three lists
 Copy an existing entry, paste it at the top of the list, and change the text. Keep the
 quotes and commas. The Home page picks up the newest items automatically.
 
+## Message from the Head of Department (Home page)
+
+Open `assets/js/content.js` and fill in `window.HOD`: the HOD's `name` and `message`. To start a new
+paragraph, type `\n\n` inside the message. For a photo, upload it as `assets/img/hod.jpg` and set
+`photo: "assets/img/hod.jpg"`. Without a photo, the HOD's initials are shown. While `message` is `""`,
+the section stays hidden.
+
 ## Updating staff, labs, training, projects and results
 
 Edit the files in the **`data`** folder (on GitHub: open the file and click the pencil icon):
@@ -108,6 +116,12 @@ Edit the files in the **`data`** folder (on GitHub: open the file and click the 
 | `data/vision_mission.json` | Vision, Mission, PEOs & PSOs page (`psos` list) and the Home page |
 | `data/nptel.json` | NPTEL: courses, and the Discipline Stars (`stars` list; upload each certificate image to `assets/img/` and put its path in `image`) |
 | `data/achievements.json` | Student Achievements (poster in `assets/img/`) |
+| `data/placement.json` | Training & Placement: `coordinator` (name, email, phone), `recruiters` (e.g. `["ABC Ltd", "XYZ Pvt Ltd"]`), `industry_connect`, `alumni_form` (Google Form link) |
+| `data/coordinators.json` | Faculty & Staff → Department Coordinators, e.g. `{ "role": "NBA / SAR Coordinator", "name": "Shri A. B. Patel" }` |
+
+The placement numbers on the Training & Placement page come from the `placement` list in
+`data/performance.json`, so you only enter them once. Empty lists in `placement.json` and
+`coordinators.json` stay hidden on the website.
 
 Copy an existing entry, paste it, and change the values. Keep the quotes, commas and brackets
 exactly as they are. Never put student names, enrolment numbers or phone numbers in these files
@@ -131,6 +145,11 @@ Later edits, such as changing `content.js`, can be made from GitHub's web editor
 **Keeping the old address working.** Leave the Google Site published, but replace its
 Home page content with a short "This site has moved" note and a button linking to the
 new address. That way old links shared with students still lead somewhere.
+
+## Text size buttons
+
+The A− / 100% / A+ buttons at the top right (tablets and computers) make the text smaller or larger.
+Each visitor's choice is remembered on their device. Nothing to set up.
 
 ## Logos and photos
 

@@ -203,3 +203,41 @@ document.addEventListener("click", function () {
     box.classList.remove("hidden"); box.classList.add("inline-flex");
   }).catch(function () {});
 })();
+
+/* Message from the Head of Department (HOD in content.js). Hidden until a message is filled in. */
+(function () {
+  var box = document.getElementById("hod-message"), h = window.HOD || {};
+  if (!box || !(h.message || "").trim()) return;
+  var esc = function (s) { return String(s || "").replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var initials = (h.name || "HOD").replace(/^(Shri|Smt\.?|Dr\.?|Prof\.?)\s+/i, "").split(/[\s.]+/).filter(Boolean).map(function (p) { return p[0]; }).join("").slice(0, 3);
+  box.querySelector("[data-hod=photo]").innerHTML = h.photo
+    ? '<img src="' + esc(h.photo) + '" alt="' + esc(h.name) + '" class="w-full h-full object-cover">'
+    : '<span class="font-display text-headline-lg">' + esc(initials) + "</span>";
+  box.querySelector("[data-hod=name]").textContent = h.name || "";
+  box.querySelector("[data-hod=designation]").textContent = h.designation || "";
+  box.querySelector("[data-hod=text]").innerHTML = h.message.trim().split(/\n\s*\n/).map(function (p) { return '<p>' + esc(p) + "</p>"; }).join("");
+  box.classList.remove("hidden");
+})();
+
+/* Text size buttons (A- / A / A+) in the top bar. The choice is remembered on this device. */
+(function () {
+  var sizes = [0.9, 1, 1.1, 1.2], i = 1, KEY = "gpcmech-text-size";
+  try { var saved = parseFloat(localStorage.getItem(KEY)); if (sizes.indexOf(saved) > -1) i = sizes.indexOf(saved); } catch (e) {}
+  var targets = function () { return document.querySelectorAll("main, footer"); };
+  var apply = function () {
+    targets().forEach(function (el) { el.style.zoom = sizes[i] === 1 ? "" : sizes[i]; });
+    var lbl = document.getElementById("ts-value"); if (lbl) lbl.textContent = Math.round(sizes[i] * 100) + "%";
+    document.querySelectorAll("[data-ts]").forEach(function (b) {
+      var d = b.getAttribute("data-ts");
+      b.disabled = (d === "-" && i === 0) || (d === "+" && i === sizes.length - 1);
+    });
+    try { localStorage.setItem(KEY, sizes[i]); } catch (e) {}
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-ts]"); if (!b) return;
+    var d = b.getAttribute("data-ts");
+    i = d === "+" ? Math.min(i + 1, sizes.length - 1) : d === "-" ? Math.max(i - 1, 0) : 1;
+    apply();
+  });
+  apply();
+})();

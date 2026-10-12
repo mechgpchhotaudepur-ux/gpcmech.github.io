@@ -4,6 +4,7 @@
    - NOTICES    -> Notice Board page + "Latest notices" on Home
    - ACTIVITIES -> Activity page + "Recent activities" on Home
    - DOWNLOADS  -> Download page + quick links on Home
+   - HOD        -> "Message from the Head of Department" on Home
    Newest items go at the TOP of each list. Keep the commas and quotes.
    ===================================================================== */
 
@@ -72,6 +73,18 @@ window.ACTIVITIES = [
     text: "A showcase of the innovative and impactful projects undertaken by mechanical engineering students.", link: "" },
 ];
 
+/* MESSAGE FROM THE HEAD OF DEPARTMENT (shown on the Home page)
+   Fill in the name and the message. Leave message "" and the section stays hidden.
+   photo: upload the HOD's photo to assets/img/ (e.g. assets/img/hod.jpg) and put the path here,
+          or leave "" to show initials instead.
+   Start a new paragraph in the message with \n\n                                              */
+window.HOD = {
+  name: "",
+  designation: "Head of Department, Mechanical Engineering",
+  photo: "",
+  message: "",
+};
+
 /* Download fields: title, text, icon (Material Symbols name), link */
 window.DOWNLOADS = [
   { title: "Student Fees Payment", text: "Pay fees online through the e-Shiksha ERP portal", icon: "payments",
@@ -82,8 +95,16 @@ window.DOWNLOADS = [
     link: "https://drive.google.com/drive/folders/1RmLWJbUnPERMb-mDbpRmbgB1lHmcWy8g?usp=share_link" },
   { title: "Class Coordinator List", text: "Coordinators for each semester", icon: "groups",
     link: "https://drive.google.com/drive/folders/14TWtEp8hNYTEMF1RaG4pyEvvmJv26wYz?usp=sharing" },
-  { title: "New Student Registration Form", text: "Student registration forms", icon: "assignment",
+  { title: "Registration Form", text: "Student registration forms", icon: "assignment",
     link: "https://drive.google.com/drive/folders/1nckHvtN_qTqWdrHODoB9XGr3c4BR8mb-?usp=sharing" },
+  { title: "Academic Calendar (Institute)", text: "Term dates, exams and holidays of GP Chhotaudepur", icon: "calendar_month",
+    link: "https://drive.google.com/drive/folders/1jqFY7QdRVsnSJunixYHZ6OtXzIZ3sIqF?usp=sharing" },
+  { title: "GTU Academic Calendar", text: "University calendar for diploma programmes", icon: "event",
+    link: "https://www.gtu.ac.in/academics/academic-calendar" },
+  { title: "GTU Syllabus & Teaching Scheme", text: "Official GTU syllabus search, by branch and semester", icon: "travel_explore",
+    link: "https://gtu.ac.in/syllabus/syllabus.aspx" },
+  { title: "Department Presentation", text: "Presentation on the Mechanical Engineering Department", icon: "slideshow",
+    link: "https://drive.google.com/file/d/1RhtTXpXNDdfaJSNkv59wwYlOYWkug7Ur/view?usp=sharing" },
   { title: "Syllabus (Old)", text: "Previous curriculum, for backlog students", icon: "history_edu",
     link: "https://drive.google.com/drive/folders/1-Cshtw7Cb299ECrHz_BXtWiFJ-9QkX7d?usp=share_link" },
   { title: "Lab Manuals (Old Syllabus)", text: "Practical manuals as per the old syllabus", icon: "inventory_2",

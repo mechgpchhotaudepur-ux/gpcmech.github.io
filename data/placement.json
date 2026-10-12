@@ -1,0 +1,12 @@
+{
+  "note": "Placement numbers are taken from data/performance.json (placement list), so they are entered only once. Fill in the lists below; empty lists stay hidden on the website.",
+  "coordinator": { "name": "", "designation": "Training & Placement Coordinator, Mechanical Engineering", "email": "", "phone": "" },
+  "recruiters": [],
+  "industry_connect": [
+    { "name": "SEKO Shivam Engitech Private Limited", "type": "Industrial visit" },
+    { "name": "Siemens Centre of Excellence", "type": "Industrial visit" },
+    { "name": "Shree Parantap Institute of CNC Programming", "type": "Industrial visit" }
+  ],
+  "alumni_form": "",
+  "institute_reports": "https://drive.google.com/drive/folders/1cqX9HySVaHBYLuiEIlfWvb4MHw42MCv0?usp=sharing"
+}

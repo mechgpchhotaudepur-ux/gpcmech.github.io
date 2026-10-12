@@ -1,0 +1,4 @@
+{
+  "note": "Department coordinators shown on the Faculty & Staff page. Add one line per role, e.g. { \"role\": \"NBA / SAR Coordinator\", \"name\": \"Shri A. B. Patel\" }. While the list is empty, the page links to the class coordinator list instead.",
+  "coordinators": []
+}
