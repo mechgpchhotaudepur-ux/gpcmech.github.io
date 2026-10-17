@@ -20,6 +20,7 @@ https://sites.google.com/view/gpchhotaudepurmech/
 | Student Achievements | `student-achievements.html` |
 | Virtual Labs | `virtual-lab.html` |
 | Training & Placement | `placement.html` |
+| Faculty Corner (faculty login) | `faculty.html` |
 
 **Previewing on your computer:** most pages open with a double-click. The data pages
 (Vision & PEOs, Staff, Training, Laboratories, Projects, Performance, NPTEL, Achievements) load their numbers from the `data`
@@ -68,6 +69,59 @@ The `.github` folder starts with a dot: on a Mac press Cmd+Shift+. in Finder to 
 Every page then records its visits, and the footer shows **Visitors: N**. The total can lag by up to a
 few hours, because GoatCounter caches it. The dashboard shows full details (pages, dates, devices,
 countries). Until a code is set, nothing is counted and no counter is shown.
+
+## Faculty Corner (faculty login through Google)
+
+`faculty.html` (Department menu → *Faculty Corner (login)*, and the footer) collects the department's
+internal records: NBA/SAR evidence for criteria 1 to 9, minutes and circulars, student records and results,
+and timetables and lab records. The page only lists links. The files stay in Google Drive, and **Google
+does the login**: a folder opens only for the Gmail IDs it is shared with. The page is hidden from Google search.
+
+**One-time setup (department account):**
+1. Sign in to Google Drive as **mechgpchhotaudepur@gmail.com**. Create a folder `Mechanical Faculty Corner`
+   with sub-folders: `NBA SAR Evidence` (inside it `C1` … `C9`), `Meetings & Circulars`,
+   `Student Records & Results`, `Timetables & Lab Records`.
+2. Right-click `Mechanical Faculty Corner` → **Share** → add each faculty member's Gmail ID
+   (Viewer, or Editor for those who upload). Sub-folders inherit this, so you share only once.
+3. In the same window, check that **General access** says **Restricted**. Never "Anyone with the link":
+   the links on this page are public, so the sharing setting is the only lock.
+4. Open each folder, copy its address from the browser, and paste it as `link` in the matching line of
+   `window.FACULTY_LINKS` in `assets/js/content.js`. Commit.
+
+Cards without a link show "Not linked yet". To add a card, copy a line in `FACULTY_LINKS` and change it.
+When a faculty member leaves, remove their Gmail ID from the folder's sharing. Their access ends at once,
+and nothing changes on the website. If someone opens a folder they are not on the list for, Google shows
+*Request access*, and the department account gets an email to approve or ignore it.
+
+## Microsoft Clarity: heatmaps and session recordings (free)
+
+Clarity shows where visitors click, how far they scroll, and anonymous replays of real visits. Use it to
+see whether students find the downloads, notices and Virtual Labs. It is free with no traffic limit, and
+recordings are kept for about 30 days.
+
+1. Go to https://clarity.microsoft.com and sign in with **mechgpchhotaudepur@gmail.com**
+   (use "Sign in with Google").
+2. **Add new project**: name `Mechanical Department`, website URL = your GitHub Pages address.
+3. In the project, open **Settings → Overview** and copy the **Project ID** (about 10 letters and numbers).
+4. In GitHub, open `assets/js/content.js` and paste it: `window.CLARITY_PROJECT_ID = "q1w2e3r4t5";`. Commit.
+
+Data appears in the Clarity dashboard within about 2 hours. A one-line note in the footer then tells
+visitors the site uses Clarity and GoatCounter. The whole Virtual Lab console is masked, so names and
+enrolment numbers typed there are never recorded. To switch Clarity off, set the ID back to `""`.
+
+## Google Search Console: how people find you on Google (free)
+
+This shows the Google searches that bring visitors to the site and whether every page is indexed.
+No code change is needed.
+
+1. Go to https://search.google.com/search-console and sign in with **mechgpchhotaudepur@gmail.com**.
+2. **Add property → URL prefix** and enter the full website address (e.g. `https://<user>.github.io/<repo>/`).
+3. Choose the **HTML file** verification method and download the file (named like `google1a2b3c4d.html`).
+4. Upload that file to the repository's main folder on GitHub (next to `index.html`), commit, wait a minute,
+   then click **Verify**. Do not delete the file later.
+5. In **URL inspection**, enter the home page address and click **Request indexing**.
+
+Search data starts appearing after a few days.
 
 ## Notices from a Google Sheet
 
@@ -145,6 +199,14 @@ Later edits, such as changing `content.js`, can be made from GitHub's web editor
 **Keeping the old address working.** Leave the Google Site published, but replace its
 Home page content with a short "This site has moved" note and a button linking to the
 new address. That way old links shared with students still lead somewhere.
+
+## Gujarati / English button
+
+The **ગુજરાતી** button at the top (on phones, **ગુ** next to the menu) translates the whole website into
+Gujarati using Google Translate, and **English** switches it back. The choice carries over to every page.
+Nothing to set up and nothing to maintain: new notices, data and pages are translated automatically.
+It is machine translation, so technical terms and names may read oddly in places. Icons, and anything
+marked `translate="no"`, are left untranslated.
 
 ## Text size buttons
 

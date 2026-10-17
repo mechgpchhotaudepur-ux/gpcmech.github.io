@@ -5,6 +5,7 @@
    - ACTIVITIES -> Activity page + "Recent activities" on Home
    - DOWNLOADS  -> Download page + quick links on Home
    - HOD        -> "Message from the Head of Department" on Home
+   - FACULTY_LINKS -> Faculty Corner page (Drive folders shared only with faculty)
    Newest items go at the TOP of each list. Keep the commas and quotes.
    ===================================================================== */
 
@@ -12,6 +13,13 @@
    Put your GoatCounter code between the quotes, e.g. "gpcmech" for gpcmech.goatcounter.com.
    Leave it "" and no visits are counted and no counter is shown. */
 window.VISIT_COUNTER_CODE = "gpcmech";
+
+/* MICROSOFT CLARITY (free): heatmaps and anonymous session recordings
+   Shows where visitors click, how far they scroll, and where they get stuck.
+   Sign up at https://clarity.microsoft.com with mechgpchhotaudepur@gmail.com, add a project for this
+   website, then copy the Project ID (Settings -> Overview, e.g. "q1w2e3r4t5") between the quotes.
+   Leave it "" and Clarity is switched off. */
+window.CLARITY_PROJECT_ID = "";
 
 /* NOTICES FROM A GOOGLE SHEET
    Paste the sheet's "Publish to web" CSV link between the quotes below, e.g.
@@ -109,4 +117,30 @@ window.DOWNLOADS = [
     link: "https://drive.google.com/drive/folders/1-Cshtw7Cb299ECrHz_BXtWiFJ-9QkX7d?usp=share_link" },
   { title: "Lab Manuals (Old Syllabus)", text: "Practical manuals as per the old syllabus", icon: "inventory_2",
     link: "https://drive.google.com/drive/folders/1pKQ_n2MduTtWDhCy5pOlbbPE42BVnEJU?usp=share_link" },
+];
+
+/* FACULTY CORNER (faculty.html)
+   Each link should be a Google Drive folder, Sheet or file whose sharing is "Restricted" and
+   shared only with the faculty Gmail IDs. Google then asks faculty to sign in, and nobody else
+   can open it, even though the link itself is visible in this file.
+   NEVER use "Anyone with the link" for these files.
+   group: "NBA / SAR Evidence" | "Meetings & Circulars" | "Student Records & Results" | "Timetables & Lab Records"
+   Leave link "" and the card shows "Not linked yet".                                              */
+window.FACULTY_LINKS = [
+  { group: "NBA / SAR Evidence", title: "SAR evidence: all criteria", text: "Main folder with one sub-folder per criterion", icon: "folder_special", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 1: Vision, Mission & PEOs", text: "", icon: "flag", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 2: Curriculum & Teaching-Learning", text: "", icon: "menu_book", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 3: Course Outcomes & POs", text: "CO-PO mapping and attainment", icon: "account_tree", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 4: Students' Performance", text: "", icon: "monitoring", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 5: Faculty Information", text: "", icon: "badge", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 6: Facilities & Technical Support", text: "", icon: "precision_manufacturing", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 7: Continuous Improvement", text: "", icon: "trending_up", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 8: Student Support Systems", text: "Institute level", icon: "support", link: "" },
+  { group: "NBA / SAR Evidence", title: "Criterion 9: Governance & Institutional Support", text: "Institute level", icon: "account_balance", link: "" },
+  { group: "Meetings & Circulars", title: "Minutes of meetings (MOM)", text: "Department, academic calendar and DAB meetings", icon: "groups", link: "" },
+  { group: "Meetings & Circulars", title: "Internal circulars & office orders", text: "", icon: "description", link: "" },
+  { group: "Student Records & Results", title: "Attendance registers", text: "Semester-wise attendance", icon: "fact_check", link: "" },
+  { group: "Student Records & Results", title: "Marks & result analysis", text: "Internal marks, GTU results and analysis", icon: "analytics", link: "" },
+  { group: "Timetables & Lab Records", title: "Timetables", text: "Class, faculty and lab timetables", icon: "calendar_month", link: "" },
+  { group: "Timetables & Lab Records", title: "Lab registers & stock", text: "Dead-stock, consumables and maintenance records", icon: "inventory", link: "" },
 ];

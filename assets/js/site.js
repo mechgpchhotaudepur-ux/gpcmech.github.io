@@ -18,7 +18,9 @@
       ? '<span class="block font-display text-title-md">' + String(d.getDate()).padStart(2, "0") +
         '</span><span class="block font-tech text-caption uppercase text-on-surface-variant">' +
         MONTHS[d.getMonth()] + " " + String(d.getFullYear()).slice(2) + "</span>"
-      : '<span class="material-symbols-outlined text-secondary">campaign</span>';
+      : '<span translate="no" class="material-symbols-outlined text-secondary">campaign</span>';
+    n = Object.assign({}, n);
+    if (!/^https?:\/\//i.test(n.link || "")) n.link = "";
     var tag = n.link ? "a" : "div";
     var href = n.link ? ' href="' + esc(n.link) + '" target="_blank" rel="noopener"' : "";
     return "<" + tag + href + ' class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-start gap-space-md">' +
@@ -28,7 +30,7 @@
       (isNew ? ' <span class="inline-block px-space-xs py-0.5 rounded text-caption font-tech uppercase bg-tertiary-fixed text-on-surface">New</span>' : "") +
       '<h4 class="font-body text-title-md text-on-surface">' + esc(n.title) + "</h4>" +
       (n.text ? '<p class="text-body-sm text-on-surface-variant">' + esc(n.text) + "</p>" : "") +
-      "</div>" + (n.link ? '<span class="material-symbols-outlined text-on-surface-variant self-center">open_in_new</span>' : "") +
+      "</div>" + (n.link ? '<span translate="no" class="material-symbols-outlined text-on-surface-variant self-center">open_in_new</span>' : "") +
       "</" + tag + ">";
   }
 
@@ -60,11 +62,12 @@
     if (!rows.length) return [];
     var head = rows.shift().map(function (h) { return h.trim().toLowerCase(); });
     var col = function (names) { for (var i = 0; i < names.length; i++) { var k = head.indexOf(names[i]); if (k > -1) return k; } return -1; };
-    var c = { date: col(["date"]), category: col(["category", "type"]), title: col(["title", "notice", "subject"]),
-      text: col(["details", "description", "text"]), link: col(["link", "file link", "url", "file"]), show: col(["show", "show on website", "visible"]) };
+    var c = { date: col(["date"]), category: col(["category", "type"]), title: col(["name", "document name", "title", "notice", "subject"]),
+      text: col(["details", "description", "text"]), link: col(["link", "document link", "file link", "url", "file"]), show: col(["show", "show on website", "visible"]) };
+    if (c.title < 0 || c.link < 0) throw new Error("Notice sheet needs Name and Link columns");
     var get = function (r, k) { return c[k] > -1 ? (r[c[k]] || "").trim() : ""; };
     return rows.map(function (r) {
-      return { date: get(r, "date"), category: get(r, "category"), title: get(r, "title"), text: get(r, "text"), link: get(r, "link"), show: get(r, "show") };
+      return { date: get(r, "date"), category: get(r, "category"), title: get(r, "title"), text: get(r, "text"), link: /^https?:\/\//i.test(get(r, "link")) ? get(r, "link") : "", show: get(r, "show") };
     }).filter(function (n) { return n.title && !/^(no|n|hide|false)$/i.test(n.show); });
   }
   function newestFirst(list) {
@@ -91,14 +94,14 @@
     return '<article class="activity-card bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col" data-category="' + esc(a.category) + '">' +
       '<button type="button" class="yt relative block w-full aspect-video bg-primary-container group" data-id="' + esc(a.youtube) + '" aria-label="Play video: ' + esc(a.title) + '">' +
       '<img loading="lazy" src="https://i.ytimg.com/vi/' + esc(a.youtube) + '/hqdefault.jpg" alt="" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">' +
-      '<span class="absolute inset-0 flex items-center justify-center"><span class="w-14 h-14 rounded-full bg-tech-blue/90 group-hover:bg-tech-blue text-on-primary flex items-center justify-center shadow-lg transition-colors"><span class="material-symbols-outlined text-[32px]">play_arrow</span></span></span>' +
+      '<span class="absolute inset-0 flex items-center justify-center"><span class="w-14 h-14 rounded-full bg-tech-blue/90 group-hover:bg-tech-blue text-on-primary flex items-center justify-center shadow-lg transition-colors"><span translate="no" class="material-symbols-outlined text-[32px]">play_arrow</span></span></span>' +
       "</button>" +
       '<div class="p-space-md space-y-space-xs flex-1">' +
       '<div class="flex items-center gap-space-sm font-tech text-label-technical uppercase text-secondary"><span>' + esc(a.category) + "</span>" +
       (a.year ? '<span class="text-on-surface-variant">• ' + esc(a.year) + "</span>" : "") + "</div>" +
       '<h3 class="font-body text-title-md text-on-surface">' + esc(a.title) + "</h3>" +
       (a.text ? '<p class="text-body-sm text-on-surface-variant">' + esc(a.text) + "</p>" : "") +
-      (a.link ? '<a class="inline-flex items-center gap-1 text-body-sm text-secondary hover:underline" href="' + esc(a.link) + '" target="_blank" rel="noopener">Visit website<span class="material-symbols-outlined text-[16px]">open_in_new</span></a>' : "") +
+      (a.link ? '<a class="inline-flex items-center gap-1 text-body-sm text-secondary hover:underline" href="' + esc(a.link) + '" target="_blank" rel="noopener">Visit website<span translate="no" class="material-symbols-outlined text-[16px]">open_in_new</span></a>' : "") +
       "</div></article>";
   }
 
@@ -110,7 +113,7 @@
       'material-symbols-outlined text-secondary">' + esc(d.icon || "folder") + "</span>" +
       '<div class="min-w-0"><span class="block font-semibold text-body-md text-on-surface">' + esc(d.title) + "</span>" +
       '<span class="block text-caption text-on-surface-variant">' + esc(d.text) + "</span></div></div>" +
-      '<span class="material-symbols-outlined text-on-surface-variant shrink-0">folder_open</span></a>';
+      '<span translate="no" class="material-symbols-outlined text-on-surface-variant shrink-0">folder_open</span></a>';
   }
 
   document.querySelectorAll("[data-render]").forEach(function (el) {
@@ -119,10 +122,17 @@
     var cut = function (arr) { return limit ? arr.slice(0, limit) : arr; };
     if (type === "notices") {
       el.innerHTML = '<p class="p-space-md bg-surface-container-lowest rounded-xl text-on-surface-variant">Loading notices…</p>';
-      loadNotices().then(function (list) {
-        el.innerHTML = list.length ? cut(list).map(noticeHTML).join("")
-          : '<p class="p-space-md bg-surface-container-lowest rounded-xl text-on-surface-variant">No notices right now. Please check back later.</p>';
-      });
+      var paintNotices = function () {
+        loadNotices().then(function (list) {
+          var markup = list.length ? cut(list).map(noticeHTML).join("")
+            : '<p class="p-space-md bg-surface-container-lowest rounded-xl text-on-surface-variant">No notices right now. Please check back later.</p>';
+          if (el.innerHTML !== markup) el.innerHTML = markup;
+        });
+      };
+      paintNotices();
+      if (window.NOTICES_SHEET_CSV) setInterval(function () {
+        if (!document.hidden) { noticesPromise = null; paintNotices(); }
+      }, 60000);
     } else if (type === "activities") {
       el.innerHTML = cut(window.ACTIVITIES || []).map(activityHTML).join("");
     } else if (type === "downloads") {
@@ -240,4 +250,72 @@ document.addEventListener("click", function () {
     apply();
   });
   apply();
+})();
+
+/* Gujarati / English button. Uses Google Translate (free), so no second copy of the content is needed.
+   The choice is remembered (googtrans cookie) and carries over to every page. */
+(function () {
+  var isGu = /(^|;\s*)googtrans=\/en\/gu/.test(document.cookie);
+  document.querySelectorAll("[data-lang-toggle]").forEach(function (b) {
+    var short = b.hasAttribute("data-lang-short");
+    b.textContent = isGu ? (short ? "EN" : "English") : (short ? "ગુ" : "ગુજરાતી");
+    b.setAttribute("lang", isGu ? "en" : "gu");
+    b.setAttribute("translate", "no"); b.classList.add("notranslate");
+  });
+  var setCookie = function (v) {
+    var exp = v ? "" : "; expires=Thu, 01 Jan 1970 00:00:00 GMT", host = location.hostname;
+    document.cookie = "googtrans=" + v + "; path=/" + exp;
+    if (host.indexOf(".") > -1) document.cookie = "googtrans=" + v + "; path=/; domain=" + host + exp;
+  };
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("[data-lang-toggle]")) return;
+    setCookie(isGu ? "" : "/en/gu");
+    location.reload();
+  });
+  if (!isGu) return;
+  document.documentElement.lang = "gu";
+  window.gtInit = function () {
+    new google.translate.TranslateElement({ pageLanguage: "en", includedLanguages: "en,gu", autoDisplay: false }, "google_translate_element");
+  };
+  var s = document.createElement("script");
+  s.src = "https://translate.google.com/translate_a/element.js?cb=gtInit"; s.async = true;
+  document.body.appendChild(s);
+})();
+
+/* Microsoft Clarity: heatmaps and session recordings (project ID set in content.js).
+   The Virtual Lab console is masked, so names and enrolment numbers typed there are never recorded. */
+(function () {
+  var id = (window.CLARITY_PROJECT_ID || "").trim();
+  if (!id || location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", id);
+  var note = document.getElementById("analytics-note"); if (note) note.classList.remove("hidden");
+})();
+
+/* Faculty Corner: cards from FACULTY_LINKS in content.js */
+(function () {
+  var root = document.getElementById("faculty-groups"); if (!root) return;
+  var esc = function (s) { return String(s || "").replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var GROUPS = [["NBA / SAR Evidence", "verified"], ["Meetings & Circulars", "forum"], ["Student Records & Results", "school"], ["Timetables & Lab Records", "schedule"]];
+  var list = window.FACULTY_LINKS || [];
+  GROUPS = GROUPS.concat(list.map(function (l) { return l.group; }).filter(function (g, i, a) { return a.indexOf(g) === i && !GROUPS.some(function (x) { return x[0] === g; }); }).map(function (g) { return [g, "folder"]; }));
+  root.innerHTML = GROUPS.map(function (g) {
+    var items = list.filter(function (l) { return l.group === g[0]; }); if (!items.length) return "";
+    var linked = items.filter(function (l) { return (l.link || "").trim(); }).length;
+    return '<section class="space-y-space-md"><div class="flex items-end justify-between gap-space-md flex-wrap"><h2 class="font-display text-headline-md font-semibold flex items-center gap-space-sm">' +
+      '<span class="w-10 h-10 rounded-lg bg-tech-blue text-on-primary flex items-center justify-center shrink-0"><span translate="no" class="material-symbols-outlined" aria-hidden="true">' + g[1] + "</span></span>" + esc(g[0]) + "</h2>" +
+      '<span class="font-tech text-label-technical uppercase text-on-surface-variant">' + linked + " of " + items.length + " linked</span></div>" +
+      '<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">' + items.map(function (l) {
+        var on = (l.link || "").trim();
+        var inner = '<span class="w-11 h-11 rounded-lg ' + (on ? "bg-surface-container text-secondary" : "bg-surface-container-low text-on-surface-variant") + ' flex items-center justify-center shrink-0"><span translate="no" class="material-symbols-outlined" aria-hidden="true">' + esc(l.icon || "folder") + "</span></span>" +
+          '<span class="min-w-0 flex-1"><span class="block font-semibold text-on-surface">' + esc(l.title) + "</span>" + (l.text ? '<span class="block text-body-sm text-on-surface-variant">' + esc(l.text) + "</span>" : "") +
+          (on ? "" : '<span class="block pt-1 font-tech text-label-technical uppercase text-on-surface-variant">Not linked yet</span>') + "</span>" +
+          (on ? '<span translate="no" class="material-symbols-outlined text-on-surface-variant" aria-hidden="true">lock_open</span>' : "");
+        return on ? '<a href="' + esc(l.link) + '" target="_blank" rel="noopener" class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow p-space-md flex items-center gap-space-md border border-border-slate">' + inner + "</a>"
+          : '<div class="bg-surface-container-low rounded-xl p-space-md flex items-center gap-space-md border border-dashed border-border-slate opacity-80">' + inner + "</div>";
+      }).join("") + "</div></section>";
+  }).join("");
 })();

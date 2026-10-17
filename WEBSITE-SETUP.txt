@@ -1,0 +1,15 @@
+MECHANICAL WEBSITE UPDATE
+
+1. Extract this ZIP. Upload its contents (not the ZIP) to your existing GitHub Pages publishing folder, keeping index.html and assets in their existing locations.
+2. The homepage now contains 21 slides from the exact presentation originally linked on the site. It advances every 8 seconds, has pause/previous/next/slide selection/full-screen controls and pauses while hovered or focused. Reduced-motion visitors start paused. Slides are images; PowerPoint animation/audio is not included.
+
+NOTICE SHEET: ONE-TIME CONNECTION
+1. Create the Google Sheet by importing the supplied Mechanical-Website-Notices.xlsx (or let Codex import it after Google Drive is connected). Keep the tab name Notices and the Name and Link headers on row 1.
+2. In Google Sheets choose File > Share > Publish to web. Select only the Notices tab, choose Comma-separated values (.csv), and publish it. Keep Automatically republish when changes are made enabled. These notice names and links will be public.
+3. Copy the published CSV URL into assets/js/notices-config.js between the empty quotes. Upload that updated file to GitHub once. Alternatively, send the CSV URL to Codex to insert it for you.
+4. Add each notice on its own row with a Name and the full https:// document Link. Put the latest notices directly below the header. Paste plain URLs, not clickable labels or HYPERLINK formulas. Ensure visitors can view each linked document.
+5. After connection, the homepage Latest Notices and Notice Board read this same sheet. The open webpage checks every minute while visible; Google's publication cache may add delay. Remove a row to remove its notice. Blank names are ignored. If the sheet cannot load, the existing Class Coordinator List is used as backup.
+
+The sheet is not yet connected while NOTICES_SHEET_CSV is blank. No changes have been deployed to GitHub by this package.
+
+CONNECTED CONFIGURATION: The published Notices CSV URL supplied by you is now saved in assets/js/notices-config.js. Upload this updated website package once. After deployment, edit Name and Link in your Google Sheet to update the homepage Latest Notices and Notice Board. Do not repeat the one-time connection steps above. Changes may take a few minutes to appear due to Google publishing cache; the visible webpage checks every minute.
